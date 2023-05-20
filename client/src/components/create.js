@@ -3,11 +3,10 @@ import { useNavigate } from "react-router";
  
 export default function Create() {
  const [form, setForm] = useState({
-   name: "",
-   studentnumber: "",
-   email: "",
-   address: "",
-   id: "",
+   song: "",
+   artist: "",
+   videoURL: "",
+   Genre: "",
  });
  const navigate = useNavigate();
  
@@ -37,72 +36,148 @@ export default function Create() {
      return;
    });
  
-   setForm({ name: "", studentnumber: "", email: "", address: "", id: "", });
+   setForm({ song: "", artist: "", videoURL: "", genre: "",});
    navigate("/");
  }
  
  // This following section will display the form that takes the input from the user.
  return (
    <div>
-     <h3>Create New Record</h3>
+     <h3>Create Record</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
-         <label htmlFor="name">Name</label>
+         <label htmlFor="song">Song</label>
          <input
            type="text"
            className="form-control"
-           id="name"
-           value={form.name}
-           onChange={(e) => updateForm({ name: e.target.value })}
+           id="song"
+           value={form.song}
+           onChange={(e) => updateForm({ song: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="studentnumber">Student Number</label>
+         <label htmlFor="artist">Artist</label>
          <input
            type="text"
            className="form-control"
-           id="studentnumber"
-           value={form.studentnumber}
-           onChange={(e) => updateForm({ studentnumber: e.target.value })}
+           id="artist"
+           value={form.artist}
+           onChange={(e) => updateForm({ artist: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="email">Email</label>
+         <label htmlFor="videoURL">Video URL</label>
          <input
            type="text"
            className="form-control"
-           id="email"
-           value={form.email}
-           onChange={(e) => updateForm({ email: e.target.value })}
+           id="videoURL"
+           value={form.videoURL}
+           onChange={(e) => updateForm({ videoURL: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="address">Address</label>
+         <label htmlFor="genre">Genre</label>
          <input
            type="text"
            className="form-control"
-           id="address"
-           value={form.address}
-           onChange={(e) => updateForm({ address: e.target.value })}
+           id="genre"
+           value={form.genre}
+           onChange={(e) => updateForm({ genre: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="id">ID</label>
-         <input
-           type="text"
-           className="form-control"
-           id="id"
-           value={form.id}
-           onChange={(e) => updateForm({ id: e.target.value })}
-         />
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="genreOptions"
+             id="pop"
+             value="Pop"
+             checked={form.level === "pop"}
+             onChange={(e) => updateForm({ level: e.target.value })}
+           />
+           <label htmlFor="pop" className="form-check-label">Pop</label>
+         </div>
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="rock"
+             id="rock"
+             value="rock"
+             checked={form.level === "rock"}
+             onChange={(e) => updateForm({ level: e.target.value })}
+           />
+           <label htmlFor="rock" className="form-check-label">Rock</label>
+         </div>
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="genreOptions"
+             id="country"
+             value="country"
+             checked={form.level === "country"}
+             onChange={(e) => updateForm({ level: e.target.value })}
+           />
+           <label htmlFor="country" className="form-check-label">Country</label>
        </div>
+       <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="genreOptions"
+             id="classical"
+             value="classical"
+             checked={form.level === "classical"}
+             onChange={(e) => updateForm({ level: e.target.value })}
+           />
+           <label htmlFor="classical" className="form-check-label">Classical</label>
+         </div>
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="genreOptions"
+             id="dance"
+             value="dance"
+             checked={form.level === "dance"}
+             onChange={(e) => updateForm({ level: e.target.value })}
+           />
+           <label htmlFor="dance" className="form-check-label">Dance</label>
+         </div>
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="genreOptions"
+             id="rap"
+             value="rap"
+             checked={form.level === "rap"}
+             onChange={(e) => updateForm({ level: e.target.value })}
+           />
+           <label htmlFor="rap" className="form-check-label">Rap</label>
+         </div>
+         <div className="form-check form-check-inline">
+           <input
+             className="form-check-input"
+             type="radio"
+             name="genreOptions"
+             id="others"
+             value="others"
+             checked={form.level === "others"}
+             onChange={(e) => updateForm({ level: e.target.value })}
+           />
+           <label htmlFor="others" className="form-check-label">Others</label>
+         </div>
        <div className="form-group">
          <input
            type="submit"
-           value="Create person"
+           value="Create Song"
            className="btn btn-primary"
          />
        </div>
+      </div>
      </form>
    </div>
  );
